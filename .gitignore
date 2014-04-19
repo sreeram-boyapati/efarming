@@ -1,0 +1,44 @@
+# Python bytecode:
+*.py[co]
+*.pyc
+
+# Packaging files:
+*.egg*
+
+# Editor temp files:
+*.swp
+*~
+
+# Sphinx docs:
+docs/build
+docs/_build
+
+# SQLite3 database files:
+*.db
+
+# Logs:
+*.log
+
+# generated static files:
+assets
+static
+venv
+
+#New Relic Ini Config Details
+
+# local media files:
+media
+
+# process id files:
+*.pid
+
+# celerybeat schedule file:
+celerybeat-schedule
+djcelery.schedulers.DatabaseScheduler
+
+# special settings file:
+vitcloud/settings/special_settings.py
+
+
+# ide files
+*/.idea/*

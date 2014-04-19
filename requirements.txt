@@ -55,7 +55,7 @@ duplicity==0.6.21
 facepy==0.8.4
 gevent==1.0
 greenlet==0.4.1
-gunicorn==17.5
+gunicorn==18.0
 html5lib==0.95
 httplib2==0.8
 ipdb==0.8

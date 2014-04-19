@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block extra_css%}
+<style></style>
+{% endblock %}
+{% block content %}
+	<ul>
+	{% for crop in Crops %}
+	<li>
+	<div class="crop">
+    	<span class="text">{{ crop.name }}</span><br/>
+    	<span class="text">{{ crop.type_crop }}</span><br/>
+    	<span class="text">{{ crop.location }}</span><br/>
+    	<span class="text">{{ crop.price }}</span><br/>
+	</div>
+	</li>
+	{% endfor %}
+	</ul>
+{% endblock %}
+{% block extra_js %}
+<script type="text/javascript"></script>
+{% endblock %}

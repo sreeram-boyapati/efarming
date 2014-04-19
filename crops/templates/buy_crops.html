@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block extra_css%}
+<style></style>
+{% endblock %}
+{% block content %}
+<form method="POST" action="{% url 'buyCrops' %}"> 
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Make Offer"/>
+</form>
+{% endblock %}
+{% block extra_js %}
+<script type="text/javascript"></script>
+{% endblock %}
+
