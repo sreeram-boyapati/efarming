@@ -16,6 +16,7 @@ class SellCropsView(LoginRequiredMixin, CreateView):
     model = Crop
     form_class = SellCropForm
     template_name = 'sell_crops.html'
+    content_type = 'text/html'
 
     def form_valid(self, form):
         form.instance.owner = self.request.user
@@ -50,10 +51,11 @@ class BuyCropsView(LoginRequiredMixin, CreateView):
     template_name = 'buy_crops.html'
     form_class = BuyCropForm
     model = Crop
+    content_type = 'text/html'
 
     def dispatch(self, request, *args, **kwargs):
         if request.method == 'GET':
-            crop_id = request.GET['cropId']
+            crop_id = request.GET['cropid']
             self.request.session['crop_id'] = crop_id
         return super(BuyCropsView, self).dispatch(request, *args, **kwargs)
 
@@ -61,8 +63,10 @@ class BuyCropsView(LoginRequiredMixin, CreateView):
         quoted_price = form.cleaned_data['quoted_price']
         crop = Crop.objects.get(id=self.request.session['crop_id'])
         offerTo = crop.owner
-        transaction = Transaction(offer_from=self.request.user, offer_to=offerTo, price=quoted_price, offer_about=crop)
-        transaction.save()
+        form.instance.offer_to = offerTo
+        form.instance.offer_about = crop
+        form.instance.offer_from = self.request.user
+        form.save()
         del self.request.session['crop_id']
         return HttpResponse('Offer Is valid and is sent')
 

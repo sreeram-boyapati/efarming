@@ -22,6 +22,7 @@ class Transaction(models.Model):
 	quoted_price = models.DecimalField(max_digits=5, decimal_places=2)
 	status_choices = (('Waiting', 'Waiting'), ('Failed','Failed'), ('Success', 'Success'))
 	status = models.CharField(max_length=50, choices=status_choices, default='Waiting')
+	expected_delivery = models.DateField(null=True, blank=True)
 
 class TransactionMetaInfo(models.Model):
 	transaction = models.OneToOneField(Transaction)
